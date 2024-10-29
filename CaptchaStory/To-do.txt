@@ -1,0 +1,11 @@
+To-Do List CaptchaV2 (CaptchaStory/3FactorAuthentication)
+
+Logic
+1. Membuat simple home page setelah selesai melakukan captcha.
+2. Buat logic supaya posisi gambarnya bisa dirandomize juga. (Done)
+3. Buat logic supaya kalau password salah, text password dikosongin lagi. (Done).
+
+Design:
+1. Putih gedein, tulisan naikin. (Done)
+2. Sempurnakan Design (Kace tolong)
+3. Perbaiki css home page karena loginnya tidak center. (Done)
