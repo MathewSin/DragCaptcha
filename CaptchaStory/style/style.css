@@ -12,6 +12,7 @@ body {
     align-items: center;
 }
 
+/* Need Review */
 .captcha-container {
     background-color: #ffffff;
     background-image: url('../style/background.png');
@@ -100,6 +101,7 @@ p {
     align-items: center;
 }
 
+/* Need to be Reviewed */
 .modal-content {
     background-color: #fff;
     padding: 40px;
