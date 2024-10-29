@@ -50,8 +50,8 @@ p {
 }
 
 .captcha-image {
-    width: 80px;
-    height: 80px;
+    width: 105px;
+    height: 105px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     margin: 0;
