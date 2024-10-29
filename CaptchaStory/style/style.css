@@ -22,7 +22,7 @@ body {
     border-radius: 10px;
     padding: 100px; /* Mengambil dari kode pertama */
     max-width: 500px;
-    height: 275px; /* Mengambil dari kode pertama */
+    height: 280px; /* Mengambil dari kode pertama */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
