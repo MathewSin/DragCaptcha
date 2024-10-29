@@ -1,154 +1,141 @@
 html, body {
-    height: 100%; /* Make html and body full height */
-    margin: 0; /* Remove default margin */
+    height: 100%;
+    margin: 0;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Soft background color */
+    background-color: #f0f8ff;
     text-align: center;
-    height: 100vh; /* Use full viewport height */
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .captcha-container {
-    background-color: #ffffff; /* White background for the container */
-    background-image: url('../style/background.png'); /* Optional background image */
+    background-color: #ffffff;
+    background-image: url('../style/background.png');
     background-repeat: no-repeat;
-    background-size: cover; /* Adjust to cover the whole container */
-    border: 2px solid #cccccc; /* Light gray border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 40px; /* Adjust padding for better layout */
-    max-width: 400px; /* Limit the maximum width */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 950px;
+    height: 600px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around; /* Added to space content vertically */
 }
 
 h2 {
-    color: #f0770e; /* Orange color for headings */
-    background-color: white; /* Background for better contrast */
+    color: #f0770e;
+    background-color: white;
 }
 
 p {
-    background-color: white; /* Background for better readability */
+    background-color: white;
 }
 
 .story-container {
     display: flex;
-    justify-content: space-around; /* Space out the images */
-    margin-top: 20px; /* Space above the story container */
+    justify-content: center;
+    gap: 15px; /* Add spacing between images */
+    flex-wrap: wrap; /* Allow wrapping to avoid overflow */
+    margin-top: 20px;
+    width: 100%; /* Ensure container width */
 }
 
 .captcha-image {
-    width: 80px; /* Image width */
-    height: 80px; /* Image height */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: transform 0.2s ease-in-out; /* Smooth scaling on hover */
-    margin-top: 25px; /* Space above the images */
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    margin: 0;
 }
 
 .captcha-image:hover {
-    transform: scale(1.1); /* Scale up image on hover */
+    transform: scale(1.1);
 }
 
 #response-message {
-    margin-top: 20px; /* Space above the response message */
-    font-size: 18px; /* Font size for the message */
-    color: #007bff; /* Blue color for the message */
+    margin-top: 20px;
+    font-size: 18px;
+    color: #007bff;
 }
 
 #dropBox {
-    width: 300px; /* Width of the drop box */
-    height: 200px; /* Height of the drop box */
-    border: 2px dashed #ccc; /* Dashed border for drop box */
-    border-radius: 10px; /* Rounded corners */
-    display: flex; /* Enable flexbox */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-    margin: 20px auto; /* Center the drop box */
-    font-size: 16px; /* Font size for drop box */
-    color: #666; /* Gray text color */
-    text-align: center; /* Center the text */
+    width: 300px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
 }
 
 #dropBox.dragover {
-    border-color: #00f; /* Change border color when dragging over */
-    background-color: #e0f7fa; /* Change background color when dragging over */
+    border-color: #00f;
+    background-color: #e0f7fa;
 }
 
 /* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Position fixed to cover the screen */
-    z-index: 1; /* Display above other content */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    background-color: #fff; /* White background for modal */
-    padding: 40px; /* Padding inside modal */
-    border-radius: 8px; /* Rounded corners */
-    width: 80%; /* Width of the modal */
-    max-width: 600px; /* Limit maximum width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for modal */
-    position: relative; /* Relative position for close button */
-    text-align: center; /* Center text inside modal */
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1050px;
+    height: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
 }
 
 .close {
-    color: #aaa; /* Gray color for close button */
-    position: absolute; /* Positioning the close button */
-    top: 10px; /* Top position */
-    right: 15px; /* Right position */
-    font-size: 24px; /* Font size for close button */
-    font-weight: bold; /* Bold font */
-    cursor: pointer; /* Pointer cursor on hover */
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: black; /* Change color on hover or focus */
-    text-decoration: none; /* Remove underline */
+    color: black;
+    text-decoration: none;
 }
 
-/* Center the captcha images in the modal */
-.captcha-container {
-    display: flex;
-    justify-content: center; /* Center content */
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
-    gap: 20px; /* Space between images */
-}
-
-.captcha-image {
-    background-color: white; /* White background for images */
-    width: 100px; /* Image width */
-    height: 100px; /* Image height */
-    object-fit: cover; /* Maintain aspect ratio */
-    cursor: pointer; /* Pointer cursor on hover */
-    border: 2px solid transparent; /* Transparent border */
-    transition: border 0.3s ease; /* Smooth transition for border */
-}
-
-.captcha-image:hover {
-    border-color: #4CAF50; /* Highlight the image on hover */
-}
-
-/* Adjusting the modal size and content for smaller screens */
+/* Adjusting for smaller screens */
 @media (max-width: 768px) {
     .modal-content {
-        width: 90%; /* Adjust modal width for smaller screens */
+        width: 90%;
     }
 
     .captcha-image {
-        width: 80px; /* Smaller image width */
-        height: 80px; /* Smaller image height */
+        width: 80px;
+        height: 80px;
     }
 }
