@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Question 3</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <div class="captcha-container" id="captcha-content" data-type="hewan">
+        <h2>"Hewan manakah yang dapat berlari bersama kelinci?"</h2>
+        <p>Klik dan seret gambar yang sesuai untuk melanjutkan cerita.</p>
+        <div id="dropBox" class="drop-box">Drag the correct image here</div>
+    </div>
+        
+        <div class="story-container">
+            <img src="../style/Fish.jpg" alt="fish" class="captcha-image" id="fish">
+            <img src="../style/bird.jpg" alt="bird" class="captcha-image" id="bird">
+            <img src="../style/turtle.JPG" alt="turtle" class="captcha-image" id="turtle">
+        </div>      
+        <p id="response-message"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/backendQ3.js" defer></script>
+    <script src="../js/modal.js" defer></script>
+</body>
+</html>
