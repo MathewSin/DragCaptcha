@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Question 2</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <div class="captcha-container" id="captcha-content" data-type="fruit">
+        <h2>Mari kita bantu kelinci menemukan wortelnya!</h2>
+        <p>Klik dan seret gambar yang sesuai untuk melanjutkan cerita.</p>
+        <div id="dropBox" class="drop-box">Drag the correct image here</div>
+    </div>
+
+        <div class="story-container">
+            <img src="../style/apple.jpg" alt="apel" class="captcha-image" id="apple">
+            <img src="../style/carrot.jpg" alt="wortel" class="captcha-image" id="carrot">
+            <img src="../style/banana.jpg" alt="pisang" class="captcha-image" id="banana">
+        </div>      
+        <p id="response-message"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/backendQ2.js" defer></script>
+    <script src="../js/modal.js" defer></script>
+</body>
+</html>

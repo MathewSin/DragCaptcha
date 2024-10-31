@@ -1,0 +1,129 @@
+/* Global Style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Atau, Anda bisa menambahkan ini ke elemen html */
+html {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Navigation */
+nav {
+    margin-top: 1.25rem;
+}
+
+nav a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+}
+
+nav a:hover {
+    color: #087f23;
+}
+
+/* Main Content */
+main {
+    max-width: 90%;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.button {
+    display: inline-block;
+    margin: 0.625rem;
+    padding: 0.75rem 1.25rem;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+.button:hover {
+    background-color: #087f23;
+}
+
+/* Feedback Section */
+.feedback-section {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feedback-link {
+    margin-top: 3rem;
+}
+
+.feedback-link a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.feedback-link a:hover {
+    background-color: #45a049;
+}
+
+.qr-code {
+    margin-top: 4.5rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Footer */
+footer {
+    margin-top: 21%;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #777;
+    text-align: center;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    header {
+        font-size: 1.25rem;
+        padding: 0.75rem;
+    }
+    
+    nav a {
+        font-size: 1rem;
+    }
+    
+    .button, .feedback-link a {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
