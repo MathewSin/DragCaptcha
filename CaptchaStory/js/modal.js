@@ -111,21 +111,113 @@ function initializeCaptcha(captchaType) {
     }
 }
 
-// Function to add drag-and-drop capabilities
-function enableDragAndDrop(captchaType) {
-    const draggableElement = document.getElementById('draggable');
-    const dropZone = document.getElementById('dropBox'); // Pastikan ID sesuai
 
-    if (!draggableElement || !dropZone) {
-        console.error('Drag-and-drop elements not found.');
+// Initialize the CAPTCHA with drag-and-drop for fruit
+function initializeFruitCaptcha() {
+    const carrotImage = document.getElementById('carrot');
+    const appleImage = document.getElementById('apple');
+    const bananaImage = document.getElementById('banana');
+
+    if (!carrotImage || !appleImage || !bananaImage) {
+        console.error('CAPTCHA images not found. Make sure the fruit images are loaded correctly.');
         return;
     }
 
-    // Drag Start
-    draggableElement.addEventListener('dragstart', function(event) {
-        event.dataTransfer.setData('text/plain', event.target.id);
-        console.log("Drag started:", event.target.id); // Debugging log
+    const images = [carrotImage, appleImage, bananaImage];
+
+    // Acak urutan gambar
+    for (let i = images.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        images[i].parentNode.appendChild(images[j]);
+    }
+
+    // Set draggable attribute on the correct answer
+    carrotImage.setAttribute('draggable', 'true');
+    carrotImage.id = 'draggable'; // Set the ID for drag-and-drop
+    appleImage.id = 'apple';
+    bananaImage.id = 'banana';
+
+    // Set dragstart event listener
+    carrotImage.addEventListener('dragstart', function(event) {
+        event.dataTransfer.setData('text/plain', 'draggable');
     });
+
+    // Enable drag-and-drop functionality
+    enableDragAndDrop('fruit');
+}
+
+// Sama untuk rumah dan hewan
+function initializeHouseCaptcha() {
+    const rabbitHouseImage = document.getElementById('rabbitHouse');
+    const dogHouseImage = document.getElementById('dogHouse');
+    const catHouseImage = document.getElementById('catHouse');
+
+    if (!rabbitHouseImage || !dogHouseImage || !catHouseImage) {
+        console.error('CAPTCHA images not found. Make sure the house images are loaded correctly.');
+        return;
+    }
+
+    const images = [rabbitHouseImage, dogHouseImage, catHouseImage];
+
+    // Acak urutan gambar
+    for (let i = images.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        images[i].parentNode.appendChild(images[j]);
+    }
+
+    // Set draggable attribute pada gambar yang benar
+    rabbitHouseImage.setAttribute('draggable', 'true');
+    rabbitHouseImage.id = 'draggable'; // Set ID untuk drag-and-drop
+    dogHouseImage.id = 'dogHouse';
+    catHouseImage.id = 'catHouse';
+
+    // Set dragstart event listener
+    rabbitHouseImage.addEventListener('dragstart', function(event) {
+        event.dataTransfer.setData('text/plain', 'draggable');
+    });
+
+    // Enable drag-and-drop functionality
+    enableDragAndDrop('house');
+}
+
+// Untuk hewan juga
+function initializeAnimalCaptcha() {
+    const fishImage = document.getElementById('fish');
+    const birdImage = document.getElementById('bird');
+    const turtleImage = document.getElementById('turtle');
+
+    if (!fishImage || !birdImage || !turtleImage) {
+        console.error('CAPTCHA images not found. Make sure the animal images are loaded correctly.');
+        return;
+    }
+
+    const images = [fishImage, birdImage, turtleImage];
+
+    // Acak urutan gambar
+    for (let i = images.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        images[i].parentNode.appendChild(images[j]);
+    }
+
+    // Set draggable attribute on the correct answer
+    turtleImage.setAttribute('draggable', 'true');
+    turtleImage.id = 'draggable'; // Set the ID for drag-and-drop
+    fishImage.id = 'fish';
+    birdImage.id = 'bird';
+
+    // Set dragstart event listener
+    turtleImage.addEventListener('dragstart', function(event) {
+        event.dataTransfer.setData('text/plain', 'draggable');
+    });
+
+    // Enable drag-and-drop functionality
+    enableDragAndDrop('animal');
+}
+
+
+// Function to add drag-and-drop capabilities
+function enableDragAndDrop(captchaType) {
+    const dropZone = document.getElementById('dropBox'); // Pastikan ID sesuai
 
     // Allow Drop
     dropZone.addEventListener('dragover', function(event) {
@@ -137,7 +229,27 @@ function enableDragAndDrop(captchaType) {
     dropZone.addEventListener('drop', function(event) {
         event.preventDefault();
         const data = event.dataTransfer.getData('text/plain');
-        if (data === 'draggable') {
+
+        // Memastikan data yang benar diperiksa berdasarkan captchaType
+        if (captchaType === 'fruit' && data === 'draggable') {
+            Swal.fire({
+                title: "Correct!",
+                text: "CAPTCHA completed successfully.",
+                icon: "success",
+                confirmButtonText: "OK"
+            }).then(() => {
+                completeCaptcha(); // CAPTCHA completed successfully
+            });
+        } else if (captchaType === 'house' && data === 'draggable') {
+            Swal.fire({
+                title: "Correct!",
+                text: "CAPTCHA completed successfully.",
+                icon: "success",
+                confirmButtonText: "OK"
+            }).then(() => {
+                completeCaptcha(); // CAPTCHA completed successfully
+            });
+        } else if (captchaType === 'animal' && data === 'draggable') {
             Swal.fire({
                 title: "Correct!",
                 text: "CAPTCHA completed successfully.",
@@ -164,68 +276,8 @@ function enableDragAndDrop(captchaType) {
     });
 }
 
-// Initialize the CAPTCHA with drag-and-drop for fruit
-function initializeFruitCaptcha() {
-    const carrotImage = document.getElementById('carrot');
-    const appleImage = document.getElementById('apple');
-    const bananaImage = document.getElementById('banana');
 
-    if (!carrotImage || !appleImage || !bananaImage) {
-        console.error('CAPTCHA images not found. Make sure the fruit images are loaded correctly.');
-        return;
-    }
 
-    // Set draggable attribute on the correct answer
-    carrotImage.setAttribute('draggable', 'true');
-    carrotImage.id = 'draggable'; // Set the ID for drag-and-drop
-    appleImage.id = 'apple';
-    bananaImage.id = 'banana';
-
-    // Enable drag-and-drop functionality
-    enableDragAndDrop('fruit');
-}
-
-// Event listeners for house CAPTCHA
-function initializeHouseCaptcha() {
-    const rabbitHouseImage = document.getElementById('rabbitHouse');
-    const dogHouseImage = document.getElementById('dogHouse');
-    const catHouseImage = document.getElementById('catHouse');
-
-    if (!rabbitHouseImage || !dogHouseImage || !catHouseImage) {
-        console.error('CAPTCHA images not found. Make sure the house images are loaded correctly.');
-        return;
-    }
-
-    // Set draggable attribute on the correct answer
-    rabbitHouseImage.setAttribute('draggable', 'true');
-    rabbitHouseImage.id = 'draggable'; // Set the ID for drag-and-drop
-    dogHouseImage.id = 'dogHouse';
-    catHouseImage.id = 'catHouse';
-
-    // Enable drag-and-drop functionality
-    enableDragAndDrop('house');
-}
-
-// Function for initializing animal CAPTCHA
-function initializeAnimalCaptcha() {
-    const fishImage = document.getElementById('fish');
-    const birdImage = document.getElementById('bird');
-    const turtleImage = document.getElementById('turtle');
-
-    if (!fishImage || !birdImage || !turtleImage) {
-        console.error('CAPTCHA images not found. Make sure the animal images are loaded correctly.');
-        return;
-    }
-
-    // Set draggable attribute on the correct answer
-    turtleImage.setAttribute('draggable', 'true');
-    turtleImage.id = 'draggable'; // Set the ID for drag-and-drop
-    fishImage.id = 'fish';
-    birdImage.id = 'bird';
-
-    // Enable drag-and-drop functionality
-    enableDragAndDrop('animal');
-}
 
 // Reset login form and error message
 function resetLogin() {
