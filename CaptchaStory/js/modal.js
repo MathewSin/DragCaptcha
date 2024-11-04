@@ -24,13 +24,32 @@ function showCaptchaPopup() {
     };
 }
 
-// Function to mark CAPTCHA as completed and hide the modal
 function completeCaptcha() {
     clearTimeout(captchaTimeout); // Clear timeout when CAPTCHA is completed
     const modal = document.getElementById("captchaModal");
-    modal.style.display = "none"; // Hide modal
-    window.location.href = 'home.html'; // Redirect to home page
+    modal.style.display = "none"; // Close CAPTCHA modal immediately
+
+    captchaCompleted = true; // Mark CAPTCHA as completed
+    captchaRequired = false;  // Reset CAPTCHA requirement after completion
+
+    if (failedLoginAttempts >= 5) {
+        // Jika pengguna gagal 5 kali, beri pesan dan reset form
+        Swal.fire({
+            title: "CAPTCHA Completed",
+            text: "Please enter your username and password again to proceed.",
+            icon: "info",
+            confirmButtonText: "OK"
+        }).then(() => {
+            resetLogin(); // Reset form to allow user to re-enter login details
+            failedLoginAttempts = 0; // Reset failed attempts counter
+        });
+    } else {
+        // Jika login benar dan CAPTCHA selesai, arahkan ke home page
+        window.location.href = '../html/home.html';
+    }
 }
+
+
 
 // Function to reload the CAPTCHA after incorrect answer
 function reloadCaptcha() {

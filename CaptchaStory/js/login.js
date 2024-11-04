@@ -1,6 +1,6 @@
 let failedLoginAttempts = 0; // Counter for failed login attempts
 let captchaCompleted = false; // Track if CAPTCHA has been completed
-let captchaRequired = false; // Track if CAPTCHA is required after failed attempts
+let captchaRequired = false; // Track if CAPTCHA is required after failed attempts or successful login
 
 function validateLogin(event) {
     event.preventDefault(); // Prevent form from submitting
@@ -13,22 +13,18 @@ function validateLogin(event) {
     if (username === "admin" && password === "admin") {
         errorMessage.textContent = '';
 
-        // If CAPTCHA is required, show CAPTCHA
-        if (captchaRequired) {
-            showCaptchaPopup(); // Show CAPTCHA if it is required
+        // If CAPTCHA is required, show CAPTCHA before redirecting
+        if (!captchaCompleted) {
+            captchaRequired = true;
+            showCaptchaPopup(); // Show CAPTCHA before redirecting
         } else {
-            // If CAPTCHA was completed before, redirect to the home page
-            if (captchaCompleted) {
-                window.location.href = '../html/home.html'; // Redirect after successful login and CAPTCHA
-            } else {
-                // Show CAPTCHA if not completed yet
-                showCaptchaPopup();
-            }
+            // Redirect to home page if CAPTCHA was completed successfully
+            window.location.href = '../html/home.html';
         }
     } else {
         failedLoginAttempts++; // Increment failed login attempts
         errorMessage.textContent = 'Invalid username or password!';
-				document.getElementById('password').value = '';
+        document.getElementById('password').value = '';
 
         // Check if failed attempts reached 5
         if (failedLoginAttempts >= 5) {
@@ -39,4 +35,12 @@ function validateLogin(event) {
     }
 }
 
+// Function to reset login fields and error message
+function resetLogin() {
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('error-message').textContent = '';
 
+    captchaCompleted = false; // Reset CAPTCHA completion status
+    captchaRequired = false; // Reset CAPTCHA requirement
+}
