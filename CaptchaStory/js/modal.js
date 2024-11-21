@@ -44,8 +44,7 @@ function completeCaptcha() {
             failedLoginAttempts = 0; // Reset failed attempts counter
         });
     } else {
-        // Jika login benar dan CAPTCHA selesai, arahkan ke home page
-        window.location.href = '../html/home.html';
+        window.location.href = 'https://mathewsin.github.io/CaptchaTester/';
     }
 }
 
