@@ -16,18 +16,19 @@ body {
     background-color: #ffffff;
     background-image: url('../style/background.png');
     background-repeat: no-repeat;
-    background-size: 100%; /* Mengambil dari kode pertama */
-    background-position: center;
+    background-size: contain; /* Gambar menyesuaikan ukuran tanpa terpotong */
+    background-position: center; /* Menjaga gambar tetap terpusat */
     border: 2px solid #cccccc;
     border-radius: 10px;
-    padding: 100px; /* Mengambil dari kode pertama */
-    max-width: 500px;
-    height: 280px; /* Mengambil dari kode pertama */
+    padding: 40px;
+    max-width: 443px;
+    height: 280px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around; /* Ditambahkan untuk memposisikan konten secara vertikal */
+    justify-content: space-between; /* Memastikan semua elemen terpusat vertikal */
+    margin-left: 9%;
 }
 
 h2 {
@@ -49,8 +50,8 @@ p {
 }
 
 .captcha-image {
-    width: 135px; /* Mengambil dari kode pertama */
-    height: 135px; /* Mengambil dari kode pertama */
+    width: 90px; /* Mengambil dari kode pertama */
+    height: 90px; /* Mengambil dari kode pertama */
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     margin: 0;
@@ -67,10 +68,9 @@ p {
 }
 
 #dropBox {
-    width: 80%; /* Mengatur lebar menjadi 80% dari parent */
-    max-width: 800px; /* Maksimum lebar drop box */
-    height: 80%; /* Atur tinggi sesuai kebutuhan */
-    max-height: 800px;
+    width: 90%; /* Mengatur lebar menjadi 90% dari parent */
+    max-width: 1000px; /* Maksimum lebar drop box */
+    height: 300px; /* Atur tinggi sesuai kebutuhan */
     border: 2px dashed #ccc;
     border-radius: 10px;
     display: flex;
@@ -78,7 +78,7 @@ p {
     justify-content: center;
     margin: 20px auto;
     font-size: 16px;
-    color: #666;
+    color: #ffffff;
     text-align: center;
     overflow: auto; /* Tambahkan overflow untuk melihat konten */
 }
@@ -102,18 +102,23 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px; /* Padding untuk memberikan ruang agar modal tidak menempel ke tepi layar */
+    box-sizing: border-box;
 }
 
 .modal-content {
     background-color: #fff;
-    padding: 40px;
+    padding: 20px;
     border-radius: 8px;
     width: 100%;
-    max-width: 700px; /* Mengambil dari kode pertama */
-    height: 670px; /* Mengambil dari kode pertama */
+    max-width: 700px; /* Mengatur lebar maksimum */
+    height: auto; /* Sesuaikan tinggi dengan konten */
+    max-height: 90%; /* Batasi tinggi untuk mencegah modal terlalu tinggi */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
     text-align: center;
+    box-sizing: border-box;
+    overflow-y: auto; /* Agar konten yang lebih panjang dapat di-scroll */
 }
 
 .close {
@@ -132,14 +137,84 @@ p {
     text-decoration: none;
 }
 
-/* Adjusting for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .modal-content {
-        width: 90%;
+        width: 90%; /* Modal mengisi 90% lebar layar */
+        max-width: 600px; /* Menyesuaikan lebar maksimum */
+        padding: 20px;
+    }
+
+    .captcha-container {
+        padding: 15px;
+        width: 100%;
+        height: auto;
+    }
+
+    .captcha-container h2 {
+        font-size: 18px; /* Mengurangi ukuran font */
+    }
+
+    .captcha-container p {
+        font-size: 14px; /* Mengurangi ukuran font */
     }
 
     .captcha-image {
-        width: 80px;
-        height: 80px;
+        width: 70px; /* Mengatur ukuran gambar */
+        height: 70px;
+    }
+
+    #dropBox {
+        width: 80%; /* Membuat drop box lebih besar di layar kecil */
+        height: 250px; /* Menyesuaikan tinggi drop box */
+    }
+}
+
+/* Responsif untuk layar lebih kecil dari 768px */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 100%; /* Modal mengisi 100% lebar layar */
+        padding: 10px;
+    }
+
+    .captcha-container {
+        padding: 10px;
+        width: 100%;
+        height: auto;
+    }
+
+    .captcha-image {
+        width: 60px; /* Ukuran gambar lebih kecil untuk layar kecil */
+        height: 60px;
+    }
+
+    #dropBox {
+        width: 90%;
+        height: 200px; /* Menyesuaikan ukuran drop box untuk layar kecil */
+    }
+}
+
+/* Responsif untuk layar lebih kecil dari 480px */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .captcha-container h2 {
+        font-size: 16px; /* Ukuran font lebih kecil untuk layar sangat kecil */
+    }
+
+    .captcha-container p {
+        font-size: 12px; /* Mengurangi ukuran font agar muat */
+    }
+
+    .captcha-image {
+        width: 50px; /* Mengurangi ukuran gambar */
+        height: 50px;
+    }
+
+    #dropBox {
+        width: 80%; /* Drop box sedikit lebih kecil */
+        height: 180px; /* Menyesuaikan tinggi drop box */
     }
 }
