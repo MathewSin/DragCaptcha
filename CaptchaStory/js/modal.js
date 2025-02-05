@@ -146,7 +146,7 @@ function restartCaptchaTimeout() {
             modal.style.display = "none"; // Close the modal
             resetLogin(); // Reset login form and error message
         });
-    }, 10000); // 10 seconds
+    }, 15000); // 15 seconds
 }
 
 // Initialize CAPTCHA event listeners based on type
