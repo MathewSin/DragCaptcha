@@ -35,6 +35,27 @@ function validateLogin(event) {
     }
 }
 
+function checkCaptchaLock() {
+    const captchaLock = sessionStorage.getItem("captchaLock");
+    if (captchaLock && Date.now() < captchaLock) {
+        // Jika waktu belum habis, redirect kembali ke index2.html
+        window.location.href = "../html/index2.html";
+        return false;
+    }
+    return true;
+}
+
+function showCaptchaPopup() {
+    if (!checkCaptchaLock()) return; // Cek apakah CAPTCHA masih terkunci
+
+    const modal = document.getElementById("captchaModal");
+    const captchaContent = document.getElementById("captcha-content");
+    loadRandomCaptcha(captchaContent);
+
+    modal.style.display = "block";
+}
+
+
 // Function to reset login fields and error message
 function resetLogin() {
     document.getElementById('username').value = '';

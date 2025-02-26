@@ -69,23 +69,28 @@
     <script>
         let countdown = 30;
         const timerElement = document.getElementById("timer");
-
-        // Update the countdown every second
+    
+        // Simpan waktu mulai timeout
+        localStorage.setItem("captchaLockTime", Date.now());
+    
+        // Update countdown timer
         const timerInterval = setInterval(() => {
             countdown--;
             timerElement.innerText = `Please wait: ${countdown} seconds`;
-
-            // Change the timer color if countdown reaches 10 seconds or less
+    
             if (countdown <= 10) {
                 timerElement.setAttribute("data-time", "low");
             }
-
-            // Once the countdown is over, redirect to the login page
+    
+            // Jika waktu habis, kembalikan ke halaman login
             if (countdown <= 0) {
                 clearInterval(timerInterval);
+                localStorage.removeItem("captchaLockTime"); // Hapus lock setelah selesai
                 window.location.href = "../html/index.html";
             }
         }, 1000);
     </script>
+    
+    
 </body>
 </html>

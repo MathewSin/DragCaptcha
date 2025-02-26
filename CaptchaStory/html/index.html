@@ -34,6 +34,26 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const captchaLockTime = localStorage.getItem("captchaLockTime");
+    
+            if (captchaLockTime) {
+                const elapsedTime = (Date.now() - parseInt(captchaLockTime, 10)) / 1000;
+                const remainingTime = 30 - elapsedTime;
+    
+                if (remainingTime > 0) {
+                    // Jika waktu belum habis, redirect kembali ke index2.html
+                    window.location.href = "../html/index2.html";
+                } else {
+                    // Jika waktu sudah habis, hapus lock agar user bisa mengerjakan kembali
+                    localStorage.removeItem("captchaLockTime");
+                }
+            }
+        });
+    </script>
+    
+
     <script src="../js/login.js"></script>
     <script src="../js/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
